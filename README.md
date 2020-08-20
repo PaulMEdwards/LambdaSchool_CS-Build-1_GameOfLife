@@ -5,15 +5,15 @@
 ## Decisions
 
 - Initially create a 2D game, but work towards implementing a 3D game area using [ThreeJS](https://threejs.org/).
--* [Basics of ThreeJS Slide Deck](http://fhtr.org/BasicsOfThreeJS/)
+  - [Basics of ThreeJS Slide Deck](http://fhtr.org/BasicsOfThreeJS/)
 - Use recursive calculation with memoization (caching) for performance: [Hashlife](https://en.wikipedia.org/wiki/Hashlife) or similar.
--* [An Algorithm for Compressing Space and Time - Dr. Dobb's](https://www.drdobbs.com/jvm/an-algorithm-for-compressing-space-and-t/184406478)
+  - [An Algorithm for Compressing Space and Time - Dr. Dobb's](https://www.drdobbs.com/jvm/an-algorithm-for-compressing-space-and-t/184406478)
 
 ## Ideas
 
 - Have a library of patterns to place. Support rotation & drag & drop.
 - Cycle through RGB color hues for each successive generation "born".
--* [Colorized Life](http://www.ericweisstein.com/encyclopedias/life/ColorizedLife.html)
+  - [Colorized Life](http://www.ericweisstein.com/encyclopedias/life/ColorizedLife.html)
 - Optionally represent cells as semi-transparent spheres or micro-cellular organisms. Possibly use sprites for performance.
 - Use [dat.gui](https://github.com/dataarts/dat.gui) for lightweight controls UI?
 - Implement board & CA as Voxels using [VoxelJS](http://www.voxeljs.com/) / [new VoxelJS-Next library](https://github.com/joshmarinacci/voxeljs-next)?
