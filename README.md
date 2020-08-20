@@ -22,7 +22,7 @@
 ### Literature
 
 - [Wikipedia: Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
-- [The Nature of Code: 7.6 The Game of Life](https://natureofcode.com/book/chapter-7-cellular-automata/)
+- [The Nature of Code: Chapter 7. Cellular Automata](https://natureofcode.com/book/chapter-7-cellular-automata/)
 - [An Algorithm for Compressing Space and Time - Dr. Dobb's](https://www.drdobbs.com/jvm/an-algorithm-for-compressing-space-and-t/184406478)
 - [Gosper's Algorithm (Hashlife) - An explanation of how the hashlife algorithm reduces processing time and effort for cellular automata evaluation.](https://jennyhasahat.github.io/hashlife.html)
 - [GAME DEVELOPMENT > PROGRAMMING > Creating Life: Conway's Game of Life](https://gamedevelopment.tutsplus.com/tutorials/creating-life-conways-game-of-life--gamedev-558)
