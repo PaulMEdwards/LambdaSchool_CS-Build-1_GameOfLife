@@ -1,1 +1,34 @@
 # LambdaSchool_CS-Build-1_GameOfLife
+
+Implementing [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
+
+## Decisions
+
+- Initially create a 2D game, but work towards implementing a 3D game area using [ThreeJS](https://threejs.org/).
+-* [Basics of ThreeJS Slide Deck](http://fhtr.org/BasicsOfThreeJS/)
+- Use recursive calculation with memoization (caching) for performance: [Hashlife](https://en.wikipedia.org/wiki/Hashlife) or similar.
+-* [An Algorithm for Compressing Space and Time - Dr. Dobb's](https://www.drdobbs.com/jvm/an-algorithm-for-compressing-space-and-t/184406478)
+
+## Ideas
+
+- Have a library of patterns to place. Support rotation & drag & drop.
+- Cycle through RGB color hues for each successive generation "born".
+-* [Colorized Life](http://www.ericweisstein.com/encyclopedias/life/ColorizedLife.html)
+- Optionally represent cells as semi-transparent spheres or micro-cellular organisms. Possibly use sprites for performance.
+- Use [dat.gui](https://github.com/dataarts/dat.gui) for lightweight controls UI?
+- Implement board & CA as Voxels using [VoxelJS](http://www.voxeljs.com/) / [new VoxelJS-Next library](https://github.com/joshmarinacci/voxeljs-next)?
+- "Tetris" Easter-Egg?
+
+### Literature
+
+* [The Nature of Code: 7.6 The Game of Life](https://natureofcode.com/book/chapter-7-cellular-automata/)
+* [An Algorithm for Compressing Space and Time - Dr. Dobb's](https://www.drdobbs.com/jvm/an-algorithm-for-compressing-space-and-t/184406478)
+* [Gosper's Algorithm (Hashlife) - An explanation of how the hashlife algorithm reduces processing time and effort for cellular automata evaluation.](https://jennyhasahat.github.io/hashlife.html)
+* [GAME DEVELOPMENT > PROGRAMMING > Creating Life: Conway's Game of Life](https://gamedevelopment.tutsplus.com/tutorials/creating-life-conways-game-of-life--gamedev-558)
+
+### Reference Implementations
+
+* [Play Game of Life](https://playgameoflife.com/)
+* [Golly](http://golly.sourceforge.net/)
+* [UniSim](https://www.pygame.org/project/1849/3232)
+* [Game of Voxels JS](https://github.com/mvaleriani/Game-of-Voxels-JS)
