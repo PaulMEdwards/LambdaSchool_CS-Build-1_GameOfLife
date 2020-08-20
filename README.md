@@ -1,6 +1,6 @@
-# LambdaSchool_CS-Build-1_GameOfLife
+# Lambda School - CS Build 1 - Game of Life
 
-Implementing [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
+[Cellular Automata and Conway's "Game of Life"](https://github.com/LambdaSchool/CS-Build-Week-1#cellular-automata-and-conways-game-of-life)
 
 ## Decisions
 
@@ -21,14 +21,15 @@ Implementing [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Ga
 
 ### Literature
 
-* [The Nature of Code: 7.6 The Game of Life](https://natureofcode.com/book/chapter-7-cellular-automata/)
-* [An Algorithm for Compressing Space and Time - Dr. Dobb's](https://www.drdobbs.com/jvm/an-algorithm-for-compressing-space-and-t/184406478)
-* [Gosper's Algorithm (Hashlife) - An explanation of how the hashlife algorithm reduces processing time and effort for cellular automata evaluation.](https://jennyhasahat.github.io/hashlife.html)
-* [GAME DEVELOPMENT > PROGRAMMING > Creating Life: Conway's Game of Life](https://gamedevelopment.tutsplus.com/tutorials/creating-life-conways-game-of-life--gamedev-558)
+- [Wikipedia: Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
+- [The Nature of Code: 7.6 The Game of Life](https://natureofcode.com/book/chapter-7-cellular-automata/)
+- [An Algorithm for Compressing Space and Time - Dr. Dobb's](https://www.drdobbs.com/jvm/an-algorithm-for-compressing-space-and-t/184406478)
+- [Gosper's Algorithm (Hashlife) - An explanation of how the hashlife algorithm reduces processing time and effort for cellular automata evaluation.](https://jennyhasahat.github.io/hashlife.html)
+- [GAME DEVELOPMENT > PROGRAMMING > Creating Life: Conway's Game of Life](https://gamedevelopment.tutsplus.com/tutorials/creating-life-conways-game-of-life--gamedev-558)
 
 ### Reference Implementations
 
-* [Play Game of Life](https://playgameoflife.com/)
-* [Golly](http://golly.sourceforge.net/)
-* [UniSim](https://www.pygame.org/project/1849/3232)
-* [Game of Voxels JS](https://github.com/mvaleriani/Game-of-Voxels-JS)
+- [Play Game of Life](https://playgameoflife.com/)
+- [Golly](http://golly.sourceforge.net/)
+- [UniSim](https://www.pygame.org/project/1849/3232)
+- [Game of Voxels JS](https://github.com/mvaleriani/Game-of-Voxels-JS)
