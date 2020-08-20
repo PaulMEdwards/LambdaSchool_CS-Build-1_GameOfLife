@@ -11,7 +11,10 @@
 
 ## Ideas
 
-- Have a library of patterns to place. Support rotation & drag & drop.
+- Have a library of patterns to place. Support rotation and drag & drop.
+- Implement user settable settings & use logical branching based on the setting values to perform calculations:
+  - Determine how edges are handled.
+  - Toggle between [Moore](https://en.wikipedia.org/wiki/Moore_neighborhood) & [von Neumann [extended]](https://en.wikipedia.org/wiki/Von_Neumann_neighborhood) neighborhoods.
 - Cycle through RGB color hues for each successive generation "born".
   - [Colorized Life](http://www.ericweisstein.com/encyclopedias/life/ColorizedLife.html)
 - Optionally represent cells as semi-transparent spheres or micro-cellular organisms. Possibly use sprites for performance.
@@ -21,6 +24,7 @@
 
 ### Literature
 
+- [Wikipedia: Cellular Automation](https://en.wikipedia.org/wiki/Cellular_automaton)
 - [Wikipedia: Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
 - [The Nature of Code: Chapter 7. Cellular Automata](https://natureofcode.com/book/chapter-7-cellular-automata/)
 - [An Algorithm for Compressing Space and Time - Dr. Dobb's](https://www.drdobbs.com/jvm/an-algorithm-for-compressing-space-and-t/184406478)
