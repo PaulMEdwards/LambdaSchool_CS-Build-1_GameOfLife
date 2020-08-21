@@ -8,6 +8,7 @@
   - [Basics of ThreeJS Slide Deck](http://fhtr.org/BasicsOfThreeJS/)
 - Use recursive calculation with memoization (caching) for performance: [Hashlife](https://en.wikipedia.org/wiki/Hashlife) or similar.
   - [An Algorithm for Compressing Space and Time - Dr. Dobb's](https://www.drdobbs.com/jvm/an-algorithm-for-compressing-space-and-t/184406478)
+- [Build backend API using Flask](https://blog.miguelgrinberg.com/post/how-to-create-a-react--flask-project)
 
 ## Ideas
 
