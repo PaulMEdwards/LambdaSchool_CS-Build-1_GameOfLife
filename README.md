@@ -6,6 +6,7 @@
 
 - Initially create a 2D game, but work towards implementing a 3D game area using [ThreeJS](https://threejs.org/).
   - [Basics of ThreeJS Slide Deck](http://fhtr.org/BasicsOfThreeJS/)
+  - [React Three Fiber which is a React renderer for ThreeJS](https://github.com/react-spring/react-three-fiber)
 - Use recursive calculation with memoization (caching) for performance: [Hashlife](https://en.wikipedia.org/wiki/Hashlife) or similar.
   - [An Algorithm for Compressing Space and Time - Dr. Dobb's](https://www.drdobbs.com/jvm/an-algorithm-for-compressing-space-and-t/184406478)
 - [Build backend API using Flask](https://blog.miguelgrinberg.com/post/how-to-create-a-react--flask-project)
