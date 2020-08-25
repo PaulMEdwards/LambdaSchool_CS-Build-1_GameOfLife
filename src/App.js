@@ -135,7 +135,7 @@ function App() {
   return (
     <div className="App">
       <header className="header">
-        <h1>Conway's <span className="accent">Game</span> of <span className="accent">Life</span></h1>
+        <h1>Conway<span className="accent">'</span>s <span className="accent">Game</span> of <span className="accent">Life</span></h1>
       </header>
       <section className="body">
         {/* <p>The current time is {currentTime}.</p> */}
