@@ -2,6 +2,7 @@ import React, {
   useState
   ,useRef
   ,useCallback
+  // ,useHotkeys
 } from "react";
 import produce from "immer";
 
@@ -85,6 +86,11 @@ function App() {
       runSimulation();
     }
   }
+
+  // // HotKeys Keyboard Shortcuts
+  // useHotkeys('shift+r', () => setGrid(populateGrid(true)));
+  // useHotkeys('shift+c', () => setGrid(populateGrid(false)));
+  // useHotkeys('shift+s', () => toggleRunning());
 
   return (
     <div className="App">
