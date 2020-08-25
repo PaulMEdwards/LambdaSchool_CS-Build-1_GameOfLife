@@ -11,6 +11,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-hotkeys-hook": "^2.2.2",
+    "react-input-slider": "^6.0.0",
     "react-scripts": "3.4.3"
   },
   "scripts": {

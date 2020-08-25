@@ -1,21 +1,37 @@
 import React, {
   useState
+  // ,useEffect
   ,useRef
   ,useCallback
   // ,useHotkeys
 } from "react";
 import produce from "immer";
 
+// import Slider from "react-input-slider";
+
+// import Grid from "./components/life/grid";
+
 import "./App.scss";
 
 const dims = {
   grid: {
-    rows: 25,
-    cols: 50,
-    deep: 50,
+    size: 50,
+    min: 10,
+    max: 100,
+    step: 1,
   },
-  cell: 15,
-  speed: 250,
+  cell: {
+    size: 15,
+    min: 5,
+    max: 50,
+    step: 5,
+  },
+  speed: {
+    value: 250,
+    min: 0,
+    max: 1000,
+    step: 50,
+  },
   generation: 0,
 };
 
@@ -32,21 +48,32 @@ const ops = [
 
 const populateGrid = (random = false) => {
   const data = [];
-  for (let i = 0; i < dims.grid.rows; i++) {
-    data.push(Array.from(Array(dims.grid.cols), () => (
-      random ? Math.random() > 0.67 ? 1 : 0 : 0
+  for (let i = 0; i < dims.grid.size; i++) {
+    data.push(Array.from(Array(dims.grid.size), () => (
+      random ? Math.random() > 0.6 ? 1 : 0 : 0
     )));
   }
   return data;
 }
 
 function App() {
+  // const [currentTime, setCurrentTime] = useState(0);
+
+  // useEffect(() => {
+  //   fetch('/time').then(res => res.json()).then(data => {
+  //     setCurrentTime(data.time);
+  //   });
+  // }, []);
+
   const [grid, setGrid] = useState(() => {return populateGrid()});
 
   const [running, setRunning] = useState(false);
-
   const runningRef = useRef(running);
   runningRef.current = running;
+
+  const [speed, setSpeed] = useState({ s: dims.speed.value });
+  const [gridSize, setGridSize] = useState({ w: dims.grid.size });
+  const [cellSize, setCellSize] = useState({ c: dims.cell.size });
 
   const runSimulation = useCallback(() => {
     if (!runningRef.current) {
@@ -55,13 +82,13 @@ function App() {
     // Simulate Generation
     setGrid((g) => {
       return produce(g, newGrid => {
-        for (let r = 0; r < dims.grid.rows; r++) {
-          for (let c = 0; c < dims.grid.cols; c++) {
+        for (let r = 0; r < dims.grid.size; r++) {
+          for (let c = 0; c < dims.grid.size; c++) {
             let neighbors = 0;
             ops.forEach(([x,y]) => {
               const R = r + x;
               const C = c + y;
-              if (R >= 0 && R < dims.grid.rows && C >= 0 && C < dims.grid.cols) {
+              if (R >= 0 && R < dims.grid.size && C >= 0 && C < dims.grid.size) {
                 neighbors += g[R][C];
               }
             });
@@ -78,7 +105,7 @@ function App() {
     // Increment generation counter
     dims.generation += 1;
     // Delay for configured duration in ms
-    setTimeout(runSimulation, dims.speed);
+    setTimeout(runSimulation, dims.speed.max - dims.speed.value);
     // eslint-disable-next-line
   }, []);
 
@@ -90,6 +117,16 @@ function App() {
     }
   }
 
+  const clearGrid = () => {
+    setGrid(populateGrid(false));
+    if (running) toggleRunning();
+    dims.generation = 0;
+  }
+
+  const randomizeGrid = () => {
+    setGrid(populateGrid(true));
+  }
+
   // // HotKeys Keyboard Shortcuts
   // useHotkeys('shift+r', () => setGrid(populateGrid(true)));
   // useHotkeys('shift+c', () => setGrid(populateGrid(false)));
@@ -98,26 +135,28 @@ function App() {
   return (
     <div className="App">
       <header className="header">
-        <h1>Conway's Game of Life</h1>
+        <h1>Conway's <span className="accent">Game</span> of <span className="accent">Life</span></h1>
       </header>
       <section className="body">
-        <div className=".life">
+        {/* <p>The current time is {currentTime}.</p> */}
+        {/* <Grid /> */}
+        <div className="life">
           <div
+            className="grid"
             style={{
-              display: `grid`,
-              gridTemplateColumns: `repeat(${dims.grid.cols}, ${dims.cell}px)`
+              // gridTemplateColumns: `repeat(${dims.grid.size}, ${dims.cell.size}px)`,
+              gridTemplateColumns: `repeat(${(dims.grid.size + dims.grid.size) / 2}, ${dims.cell.size}px)`,
             }}
           >
             {grid.map((rows, r) => 
               rows.map((cols, c) => (
                 <div
                   key={`${r}x${c}`}
-                  className=".life.cell"
+                  className="cell"
                   style={{
-                    width: dims.cell,
-                    height: dims.cell,
+                    width: dims.cell.size,
+                    height: dims.cell.size,
                     backgroundColor: grid[r][c] ? "white" : undefined,
-                    border: "solid 0.5px gray"
                   }}
                   onClick={() => {
                     const newGrid = produce(grid, gridCopy => {
@@ -132,21 +171,69 @@ function App() {
         </div>
       </section>
       <footer className="footer">
-        <>
-          <h3>Controls</h3>
-          <button onClick={() => {setGrid(populateGrid(true));}}>Random</button>
-          <button onClick={() => {
-            setGrid(populateGrid(false));
-            if (running) toggleRunning();
-            dims.generation = 0;
-          }}>Clear</button>
-          <button
-            onClick={() => {
-              toggleRunning();
+        <h3>Controls</h3>
+
+        <button onClick={() => {randomizeGrid();}}>Random</button>
+        <button onClick={() => {clearGrid();}}>Clear</button>
+        <button onClick={() => {toggleRunning();}}>{running ? `Stop`: `Start`}</button>
+
+        <div className="parameters">
+
+          <div className="sliderLabel">Speed: <span className="accent">{dims.speed.value / 10}</span></div>
+          <input
+            type="range"
+            value={dims.speed.value}
+            min={dims.speed.min}
+            max={dims.speed.max}
+            step={dims.speed.step}
+            onChange={e => {
+              const s = parseInt(e.target.value, 10);
+              dims.speed.value = s;
+              setSpeed(({ v }) => s);
+              console.log(`s`, s);
+              console.log("dims.speed.value", dims.speed.value);
+              console.log("speed", speed);
             }}
-          >{running ? `Stop`: `Start`}</button>
-          <h5>Generation: {dims.generation}</h5>
-        </>
+          />
+
+          <div className="sliderLabel">Cell Size: <span className="accent">{dims.cell.size}</span></div>
+          <input
+            type="range"
+            value={dims.cell.size}
+            min={dims.cell.min}
+            max={dims.cell.max}
+            step={dims.cell.step}
+            onChange={e => {
+              const c = parseInt(e.target.value, 10);
+              dims.cell.size = c;
+              setCellSize(({ v }) => c);
+              console.log(`c`, c);
+              console.log("dims.cell.size", dims.cell.size);
+              console.log("cellSize", cellSize);
+            }}
+          />
+
+          <div className="sliderLabel">Grid Size: <span className="accent">{dims.grid.size * dims.grid.size}</span></div>
+          <input
+            type="range"
+            value={dims.grid.size}
+            min={dims.grid.min}
+            max={dims.grid.max}
+            step={dims.grid.step}
+            onChange={e => {
+              const w = parseInt(e.target.value, 10);
+              dims.grid.size = w;
+              setGridSize(({ v }) => w);
+              clearGrid();
+              console.log(`w`, w);
+              console.log("dims.grid.size", dims.grid.size);
+              console.log("gridSize", gridSize);
+            }}
+          />
+          
+        </div>
+
+        <h5>Generation: <span className="accent">{dims.generation}</span></h5>
       </footer>
     </div>
   );
