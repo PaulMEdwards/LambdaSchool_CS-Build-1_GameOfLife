@@ -1,0 +1,48 @@
+$bgColor: #282c34;
+$fgColor: white;
+$dkColor: lightgray;
+$acColor: #61dafb;
+
+.App {
+  text-align: center;
+  background-color: $bgColor;
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: $fgColor;
+
+  .link {
+    color: $acColor;
+  }
+
+  .header {
+    h1 {
+      margin: 0 0 0.5em;
+    }
+  }
+
+  .body {
+    .life {
+      .grid {
+        display: grid;
+      }
+      .cell {
+        border: "solid 1px";
+        border-color: $dkColor;
+      }
+    }
+  }
+
+  .footer {
+    button {
+      background-color: $bgColor;
+      color: $fgColor;
+      font-weight: bold;
+      padding: 5px 10px;
+    }
+  }
+}
