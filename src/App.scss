@@ -21,7 +21,7 @@ $acColor: #61dafb;
 
   .header {
     h1 {
-      margin: 0 0 0.5em;
+      margin: 0 0 0.25em;
     }
   }
 
@@ -38,11 +38,17 @@ $acColor: #61dafb;
   }
 
   .footer {
+    h3 {
+      margin: 0.25em 0;
+    }
     button {
       background-color: $bgColor;
       color: $fgColor;
       font-weight: bold;
       padding: 5px 10px;
+    }
+    h5 {
+      margin: 0.25em 0;
     }
   }
 }

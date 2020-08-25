@@ -16,6 +16,7 @@ const dims = {
   },
   cell: 15,
   speed: 250,
+  generation: 0,
 };
 
 const ops = [
@@ -73,7 +74,9 @@ function App() {
           }
         }
       });
-    })
+    });
+    // Increment generation counter
+    dims.generation += 1;
     // Delay for configured duration in ms
     setTimeout(runSimulation, dims.speed);
     // eslint-disable-next-line
@@ -129,15 +132,20 @@ function App() {
         </div>
       </section>
       <footer className="footer">
-        <h3>Controls</h3>
         <>
+          <h3>Controls</h3>
           <button onClick={() => {setGrid(populateGrid(true));}}>Random</button>
-          <button onClick={() => {setGrid(populateGrid(false));}}>Clear</button>
+          <button onClick={() => {
+            setGrid(populateGrid(false));
+            if (running) toggleRunning();
+            dims.generation = 0;
+          }}>Clear</button>
           <button
             onClick={() => {
               toggleRunning();
             }}
           >{running ? `Stop`: `Start`}</button>
+          <h5>Generation: {dims.generation}</h5>
         </>
       </footer>
     </div>
