@@ -1,33 +1,139 @@
-import React, { useState, useEffect } from "react";
+import React, {
+  useState
+  ,useRef
+  ,useCallback
+} from "react";
+import produce from "immer";
 
 import "./App.scss";
 
-function App() {
-  const [currentTime, setCurrentTime] = useState(0);
+const dims = {
+  grid: {
+    rows: 25,
+    cols: 50,
+    deep: 50,
+  },
+  cell: 15,
+  speed: 250,
+};
 
-  useEffect(() => {
-    fetch('/time').then(res => res.json()).then(data => {
-      setCurrentTime(data.time);
-    });
+const ops = [
+  [0, 1],
+  [0, -1],
+  [1, -1],
+  [-1, 1],
+  [1, 1],
+  [-1, -1],
+  [1, 0],
+  [-1, 0],
+];
+
+const populateGrid = (random = false) => {
+  const data = [];
+  for (let i = 0; i < dims.grid.rows; i++) {
+    data.push(Array.from(Array(dims.grid.cols), () => (
+      random ? Math.random() > 0.67 ? 1 : 0 : 0
+    )));
+  }
+  return data;
+}
+
+function App() {
+  const [grid, setGrid] = useState(() => {return populateGrid()});
+
+  const [running, setRunning] = useState(false);
+
+  const runningRef = useRef(running);
+  runningRef.current = running;
+
+  const runSimulation = useCallback(() => {
+    if (!runningRef.current) {
+      return;
+    }
+    // Simulate Generation
+    setGrid((g) => {
+      return produce(g, newGrid => {
+        for (let r = 0; r < dims.grid.rows; r++) {
+          for (let c = 0; c < dims.grid.cols; c++) {
+            let neighbors = 0;
+            ops.forEach(([x,y]) => {
+              const R = r + x;
+              const C = c + y;
+              if (R >= 0 && R < dims.grid.rows && C >= 0 && C < dims.grid.cols) {
+                neighbors += g[R][C];
+              }
+            });
+
+            if (neighbors < 2 || neighbors > 3) {
+              newGrid[r][c] = 0;
+            } else if (g[r][c] === 0 && neighbors === 3) {
+              newGrid[r][c] = 1;
+            }
+          }
+        }
+      });
+    })
+    // Delay for configured duration in ms
+    setTimeout(runSimulation, dims.speed);
+    // eslint-disable-next-line
   }, []);
+
+  const toggleRunning = () => {
+    setRunning(!running);
+    if (!running) {
+      runningRef.current = true;
+      runSimulation();
+    }
+  }
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <p>The current time is {currentTime}.</p>
+      <header className="header">
+        <h1>Conway's Game of Life</h1>
       </header>
+      <section className="body">
+        <div className=".life">
+          <div
+            style={{
+              display: `grid`,
+              gridTemplateColumns: `repeat(${dims.grid.cols}, ${dims.cell}px)`
+            }}
+          >
+            {grid.map((rows, r) => 
+              rows.map((cols, c) => (
+                <div
+                  key={`${r}x${c}`}
+                  className=".life.cell"
+                  style={{
+                    width: dims.cell,
+                    height: dims.cell,
+                    backgroundColor: grid[r][c] ? "white" : undefined,
+                    border: "solid 0.5px gray"
+                  }}
+                  onClick={() => {
+                    const newGrid = produce(grid, gridCopy => {
+                      gridCopy[r][c] = !grid[r][c];
+                    });
+                    setGrid(newGrid);
+                  }}
+                />
+              ))
+            )}
+          </div>
+        </div>
+      </section>
+      <footer className="footer">
+        <h3>Controls</h3>
+        <>
+          <button onClick={() => {setGrid(populateGrid(true));}}>Random</button>
+          <button onClick={() => {setGrid(populateGrid(false));}}>Clear</button>
+          <button
+            onClick={() => {
+              toggleRunning();
+            }}
+          >{running ? `Stop`: `Start`}</button>
+        </>
+      </footer>
     </div>
   );
 }
