@@ -67,7 +67,7 @@ Implement at least 3 of the following features:
 - [ ] Expand your simulation into the third dimension. Google `3D Conways Life`. Google for how to do 3D stuff on your platform. Web users might check out [3D-ThreeJS](https://github.com/LambdaSchool/3D-ThreeJS), and iOS might look at [SceneKit](https://developer.apple.com/scenekit/).
 - [ ] Explore alternate algorithms for finding the nth generation, such as [Hashlife](https://en.wikipedia.org/wiki/Hashlife)
 
-## Decisions
+## Ideas
 
 - Initially create a 2D game, but work towards implementing a 3D game area using [ThreeJS](https://threejs.org/).
   - [Basics of ThreeJS Slide Deck](http://fhtr.org/BasicsOfThreeJS/)
@@ -75,9 +75,6 @@ Implement at least 3 of the following features:
 - Use recursive calculation with memoization (caching) for performance: [Hashlife](https://en.wikipedia.org/wiki/Hashlife) or similar.
   - [An Algorithm for Compressing Space and Time - Dr. Dobb's](https://www.drdobbs.com/jvm/an-algorithm-for-compressing-space-and-t/184406478)
 - [Build backend API using Flask](https://blog.miguelgrinberg.com/post/how-to-create-a-react--flask-project)
-
-## Ideas
-
 - Have a library of patterns to place. Support rotation and drag & drop.
 - Implement user settable settings & use logical branching based on the setting values to perform calculations:
   - Determine how edges are handled.
