@@ -15,10 +15,10 @@
 The main entry point of your application should house the visualization of this cellular automaton. Include necessary components, such as:
 
 - [x] Grid to display cells.
-- [ ] Cell objects or components that, at a minimum, should have:
-  - [ ] Properties
+- [x] Cell objects or components that, at a minimum, should have:
+  - [x] Properties
     - [x] current state: (alive, dead), (black, white)
-    - [ ] Clickable/Tappable:
+    - [x] Clickable/Tappable:
       - [x] can be clicked to allow user to setup initial cell configuration
       - [ ] should NOT be clickable while simulation is running
     - [x] Behaviors
