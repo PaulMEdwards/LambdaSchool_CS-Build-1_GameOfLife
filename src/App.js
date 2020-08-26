@@ -159,10 +159,12 @@ function App() {
                     backgroundColor: grid[r][c] ? "white" : undefined,
                   }}
                   onClick={() => {
-                    const newGrid = produce(grid, gridCopy => {
-                      gridCopy[r][c] = !grid[r][c];
-                    });
-                    setGrid(newGrid);
+                    if (!running) {
+                      const newGrid = produce(grid, gridCopy => {
+                        gridCopy[r][c] = !grid[r][c];
+                      });
+                      setGrid(newGrid);
+                    }
                   }}
                 />
               ))

@@ -20,7 +20,7 @@ The main entry point of your application should house the visualization of this 
     - [x] current state: (alive, dead), (black, white)
     - [x] Clickable/Tappable:
       - [x] can be clicked to allow user to setup initial cell configuration
-      - [ ] should NOT be clickable while simulation is running
+      - [x] should NOT be clickable while simulation is running
     - [x] Behaviors
       - [x] Toggle state functionality: switch between alive & dead either because user manually toggled cell before starting simulation or simulation is running and rules of life caused cell to change state
 - [x] An appropriate data structure to hold a grid of cells that is at least 25x25. Go as big as you want.
