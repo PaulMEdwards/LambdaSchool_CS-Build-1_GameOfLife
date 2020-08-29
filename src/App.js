@@ -48,7 +48,7 @@ const defaults = {
 };
 
 let generation = 0;
-// let speed = 250;
+let speed = 250;
 
 const ops = [
   [0, 1],
@@ -90,12 +90,13 @@ function App() {
   //   // eslint-disable-next-line
   // }, [data.speed.value]);
 
-  const [speed, setSpeed] = useState(data.speed.value);
+  const [speedState, setSpeed] = useState(data.speed.value);
   useEffect(() => {
-    console.log("speed", speed);
-    // setDelay(data.speed.max - speed);
+    console.log("speedState", speedState);
+    // setDelay(data.speed.max - speedState);
+    speed = speedState;
     // eslint-disable-next-line
-  }, [speed]);
+  }, [speedState]);
 
   // // const [delay, setDelay] = useState(data.speed.max - data.speed.value);
   // const [delay, setDelay] = useState(data.speed.max - speed);
@@ -133,8 +134,8 @@ function App() {
     }
 
     // Delay for configured duration in ms
-    const delay = data.speed.max - data.speed.value;
-    // const delay = data.speed.max - speed;
+    // const delay = data.speed.max - data.speed.value;
+    const delay = data.speed.max - speed;
     console.log(`runSimulation -> delay`, delay);
 
     // const d = delay;
@@ -282,7 +283,8 @@ function App() {
                       step={data.speed.step}
                       onChange={e => {
                         const s = parseInt(e.target.value, 10);
-                        // console.log(`speed`, s);
+                        console.log(`speed`, s);
+                        // speed = s;
                         // data.speed.value = s;
                         // setData({...data,
                         //   speed: {
@@ -290,7 +292,6 @@ function App() {
                         //     value: s,
                         //   },
                         // });
-                        // speed = s;
                         setSpeed(s);
                       }}
                     />
