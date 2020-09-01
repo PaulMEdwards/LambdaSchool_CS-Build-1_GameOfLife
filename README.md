@@ -48,7 +48,7 @@ Implement at least 3 of the following features:
 
 - [ ] Create a few sample cell configurations that users can load and run
 - [x] Add an option that creates a random cell configuration that users can run
-- [ ] Add additional cell properties, like color or size, and incorporate them into your visualization
+- [x] Add additional cell properties, like color or size, and incorporate them into your visualization
 - [x] Allow users to specify the speed of the simulation
 - [ ] Provide functionality to manually step through the simulation one generation at a time, as opposed to animating automatically
 - [x] Allow users to change the dimension of the grid being displayed
@@ -57,7 +57,7 @@ Implement at least 3 of the following features:
 
 #### About
 
-- [ ] On the main entry point of the application, include a separate section or link to another page or popup that describes the two main rules (birth & death) of Conway’s Game of Life
+- [x] On the main entry point of the application, include a separate section or link to another page or popup that describes the two main rules (birth & death) of Conway’s Game of Life
 
 ### Stretch Goals
 
